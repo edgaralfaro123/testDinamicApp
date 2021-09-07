@@ -4,7 +4,28 @@ import Button from '../../components/common/Button'
 const Poll =()=>{
 
     const poll =[{
-            name: 'Autos'
+            name: 'Autos',
+            data:[{
+                type:'text',
+                question:'prueba de pregunta'
+            },
+            {
+                type:'multiple',
+                question:'prueba de pregunta'
+            },
+            {
+                type:'unique',
+                question:'prueba de pregunta unique',
+                request:[{
+                    id:'dasdasdsada',
+                    request:'prueba reques'
+                },
+                {
+                    id:'dasdasdsada',
+                    request:'prueba reques'
+                }]
+            },
+            ]
         },
         {
             name: 'Motos'
