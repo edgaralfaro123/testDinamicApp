@@ -1,5 +1,4 @@
-import React,{useState} from 'react'
-
+import React from 'react'
 const Input =(props)=> {
     const {showButton=false,action,showPassword} = props
     console.log('showPassword',showPassword);
@@ -7,10 +6,10 @@ const Input =(props)=> {
         <>
         {
             showButton ?
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                     <input className="form-control" {...props} maxLength={255}></input>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" onClick={action} type="button"> {showPassword ? 'Mostrar' : 'Ocultar'}</button>
+                        <button className="btn btn-outline-secondary" onClick={action} type="button"> {showPassword ? 'Mostrar' : 'Ocultar'}</button>
                     </div>
                 </div>
             :
