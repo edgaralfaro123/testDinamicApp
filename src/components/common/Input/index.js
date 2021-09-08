@@ -1,7 +1,6 @@
 import React from 'react'
 const Input =(props)=> {
     const {showButton=false,action,showPassword} = props
-    console.log('showPassword',showPassword);
     return (
         <>
         {

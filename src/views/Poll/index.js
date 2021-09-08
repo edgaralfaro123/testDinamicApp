@@ -7,7 +7,6 @@ const Poll =()=>{
     const poll = useSelector(state => state?.questionReducer?.questions)
     const history = useHistory();
     const sendRequest =(item,data)=>{
-        console.log('data',data);
         history.push({pathname: '/DetailPoll',state: item, id: data.id ,name: data.name });
     }
     return (

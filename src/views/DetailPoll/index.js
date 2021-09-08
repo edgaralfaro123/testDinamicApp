@@ -9,7 +9,6 @@ const DetailPoll =(props)=>{
     const history = useHistory();
     const questions = useSelector(state => state?.responseReducer?.response)
     const users = useSelector(state => state?.loginReducer?.user)
-    console.log('state',state);
     const dispatch = useDispatch();
     const [data, setData] = useState([])
     const onChangeSelect = (item,question_id,type) => {
@@ -19,19 +18,21 @@ const DetailPoll =(props)=>{
                 //Validamos si la pregunta ya esta en el array
                 const check = data[`question_${question_id}`] ?? []
                 if(check.length>0){
-                    //En caso de que se encuentre en el array procedemos a obtener
+                    //En caso de que se encuentre en el array procedemos a agregar la opción con su estado actual
                     const response = check.filter((item)=> item.response !== `${value}`)
+                    //Actualizamos preguntas tipo multiple
                     setData({...data , [`question_${question_id}`] : [...response, {type, response: value, check: checked} ] } );
                 }else{
+                    //Agregamos preguntas tipo multiple
                     setData({...data , [`question_${question_id}`] : [ {type, response: value, check: checked} ] } );
                 }
             break;
             default:
-                //Caso free y unique
+                //Agregamos o actualizamos preguntas tipo free y unique
                 setData({...data,  [`question_${question_id}`] : { type, response: value} });
         }
     }
-    console.log('data',data);
+    
     const send = ()=> {
         dispatch({ type: 'ADD_RESPONSE', payload: [...questions,{ data, users,id_poll: id, name_poll: name }] });
         messageBox('Éxito!','Registro exitoso','success')

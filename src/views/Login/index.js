@@ -9,7 +9,6 @@ const Login = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const users = useSelector(state => state?.userReducer?.users)
-    console.log('users',users);
     const [data, setData] = useState({ email: '', password: '' })
     const [ showPassword , setshowPassword ] = useState(true)
     const onChangeData = (event, name) => {
@@ -27,7 +26,6 @@ const Login = () => {
             }else{
                 messageBox('Atención','Datos incorrectos')
             }
-            console.log('result',result);
         }else{
             messageBox('Atención',emailValidate.message)
         }

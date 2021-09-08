@@ -7,43 +7,12 @@ import { useHistory } from 'react-router-dom'
 const DetailPollRealized =(props)=>{
     const {data} = props.location
     const poll = useSelector(state => state?.questionReducer?.questions)
-    const [pollrealized, setPollrealized] = useState([])
-    console.log('pruebaaaaaa data',data.data[`question_1`])
-/*   
-    console.log('poll',poll); */
-    
+    const [pollrealized, setPollrealized] = useState([])    
+
     useEffect(() => {
         const filterPoll = poll.filter((item)=>item.id === data.id_poll )
-        console.log('filterPoll.data----- >>>',filterPoll);
-        console.log('data---->>>>',data);
         setPollrealized(filterPoll[0].data)
     }, [])
-/*     const history = useHistory();
-    const questions = useSelector(state => state?.responseReducer?.response)
-    const users = useSelector(state => state?.loginReducer?.user)
-    console.log('state',state);
-    const dispatch = useDispatch();
-    const [data, setData] = useState([]) */
-    const onChangeSelect = (item,question_id,type) => {
-    /*     const { target: { value = "" ,checked } = {} } = { ...item };
-        switch(type) {
-            case 'multiple':
-                //Validamos si la pregunta ya esta en el array
-                const check = data[`question_${question_id}`] ?? []
-                if(check.length>0){
-                    //En caso de que se encuentre en el array procedemos a obtener
-                    const response = check.filter((item)=> item.response !== `${value}`)
-                    setData({...data , [`question_${question_id}`] : [...response, {type, response: value, check: checked} ] } );
-                }else{
-                    setData({...data , [`question_${question_id}`] : [ {type, response: value, check: checked} ] } );
-                }
-            break;
-            default:
-                //Caso free y unique
-                setData({...data,  [`question_${question_id}`] : { type, response: value} });
-        } */
-    }
-
 
     return (
         <>
@@ -51,7 +20,6 @@ const DetailPollRealized =(props)=>{
                 <div className="col-lg-4 cardContainer  mt-2 p-5">
                     <h3 className='text-center'>Encuesta</h3>
                     {pollrealized.map((item,key)=>{
-                        console.log('item',item);
                         return (
                         <>
                         <label key={key}><strong>{item.question}</strong></label><br/>
@@ -77,6 +45,12 @@ const DetailPollRealized =(props)=>{
                             :
                                 item.type === 'multiple' ?
                                     item.request.map((question,key)=>(
+                                        data?.data?.[`question_${item.question_id}`].length>0 ?
+                                            data?.data?.[`question_${item.question_id}`].map((res)=> (
+                                                `${res.response}` === `question_${question.id}` &&
+                                                    <><label><input disabled key={key} className='form-check-input' checked ={res.check}  type="checkbox" id={question.id} value={`question_${question.id}`}/>{question.request}</label><br/></>
+                                            ))
+                                        :
                                         <><label><input disabled key={key} className='form-check-input' type="checkbox" id={question.id} value={`question_${question.id}`}/>{question.request}</label><br/></>
                                     ))
                                 :

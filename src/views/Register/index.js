@@ -15,7 +15,6 @@ const Register = () => {
         const { target: { value = '' } = {} } = { ...event }
         setData({ ...data, [name]: value });
     }
-    console.log('users',users);
 
     const sendRequest = () => {
         const emailValidate=valid(data)
