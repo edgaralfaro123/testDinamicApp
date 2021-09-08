@@ -1,6 +1,6 @@
  const questions =[{
     id:'1',
-    name: 'Desarrollador',
+    name: 'Desarrollo de aplicaciones',
     data:[
     {
         type:'unique',
@@ -103,8 +103,113 @@
 },
 {
     id:'2',
-    name: 'Motos',
-    data:[]
+    name: 'Tecnología',
+    data:[
+        {
+            type:'unique',
+            question:'¿Cuantas horas dedicas a la utilizacion de la computadora?',
+            question_id: 1,
+            request:[{
+                    id:'1',
+                    request:'1 hora'
+                },
+                {
+                    id:'2',
+                    request:'No dedico ningun tiempo'
+                },
+                {
+                    id:'3',
+                    request:'De 5 horas en adelante'
+                },
+                {
+                    id:'4',
+                    request:'De 2 a 4 horas'
+                }]
+        },
+        {
+            type:'unique',
+            question:'¿tienes computadora en tu hogar?',
+            question_id: 2,
+            request:[{
+                    id:'5',
+                    request:'Si'
+                },
+                {
+                    id:'6',
+                    request:'No'
+                }]
+        },{
+            type:'free',
+            question:'¿para que utilizas tu la computadora?',
+            question_id: 3,
+            request:''
+        },
+        {
+            type:'unique',
+            question:'¿que nivel crees tu que tienes en el manejo de la computadora?',
+            question_id: 4,
+            request:[{
+                    id:'7',
+                    request:'Avanzado'
+                },
+                {
+                    id:'8',
+                    request:'Basico'
+                },
+                {
+                    id:'9',
+                    request:'Bajo'
+                },
+                {
+                    id:'10',
+                    request:'Alto'
+                }]
+        },{
+            type:'free',
+            question:'¿para ti que es tecnologia?',
+            question_id: 5,
+            request:''
+        },{
+            type:'free',
+            question:'¿para ti que es informatica?',
+            question_id: 6,
+            request:''
+        },
+        {
+            type:'unique',
+            question:'¿tienes correo electronico?',
+            question_id: 7,
+            request:[{
+                    id:'11',
+                    request:'Si'
+                },
+                {
+                    id:'12',
+                    request:'No'
+                }]
+        },
+        {
+            type:'unique',
+            question:'¿a cual de las siguientes redes sociales perteneces?',
+            question_id: 8,
+            request:[{
+                    id:'13',
+                    request:'ninguna'
+                },
+                {
+                    id:'14',
+                    request:'twitter'
+                },
+                {
+                    id:'15',
+                    request:'hi5'
+                },
+                {
+                    id:'16',
+                    request:'facebook'
+                }]
+        }
+    ]
 }
 ]
 

@@ -14,11 +14,22 @@ const Poll =()=>{
         <>
             <Menu/>
             <div className="row">
-                <ul>
-                {poll.map((item,key)=>(
-                    <li key={key}><Button className="btn col-sm-12 glyphicon glyphicon-search" label={item.name} sendRequest={()=>sendRequest(item.data,item)} /></li>
-                ))}
-                </ul>
+                <table className="table m-5">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre encuesta</th>
+                            <th scope="col"> Acción</th>
+                        </tr>
+                    </thead>
+                    {poll.map((item,key)=>(
+                        <tr key={key}>
+                            <th scope="row">{item.id}</th>
+                            <td>{item.name}</td>
+                            <td><Button className="btn col-sm-8 glyphicon glyphicon-search" label={item.name} sendRequest={()=>sendRequest(item.data,item)} /></td>
+                        </tr>
+                    ))}
+                </table>
             </div>
         </>
     )

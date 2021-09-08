@@ -1,0 +1,32 @@
+.col-lg-4.cardContainer {
+  border-radius: 27px;
+  background-color: #84b6f4;
+  min-width: 400px;
+}
+
+.row {
+  max-width: 100%;
+}
+
+i {
+  font-style: normal;
+  font-weight: bold;
+}
+
+@media (max-width: 1200px){
+  .col-lg-4.cardContainer {
+    border-radius: 27px;
+    background-color: white;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 450px){
+  .col-lg-4.cardContainer {
+    border-radius: 27px;
+
+    background-color: white;
+    max-width: 90%;
+    min-width: 0px;
+  }
+}
