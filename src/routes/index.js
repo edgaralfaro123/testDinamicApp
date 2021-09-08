@@ -20,7 +20,6 @@ import DetailPoll from "../views/DetailPoll";
             <Route exact path="/Poll" component={Poll} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/detailpoll" component={DetailPoll} />
-            
         </Router>
     );
   }
