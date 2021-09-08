@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux';
 const Poll =()=>{
     const poll = useSelector(state => state?.questionReducer?.questions)
     const history = useHistory();
-    const sendRequest =(item)=>{
-        history.push({pathname: '/DetailPoll',state: item  });
+    const sendRequest =(item,data)=>{
+        console.log('data',data);
+        history.push({pathname: '/DetailPoll',state: item, id: data.id ,name: data.name });
     }
     return (
         <>
@@ -15,7 +16,7 @@ const Poll =()=>{
             <div className="row">
                 <ul>
                 {poll.map((item,key)=>(
-                    <li key={key}><Button className="btn col-sm-12 glyphicon glyphicon-search" label={item.name} sendRequest={()=>sendRequest(item.data)} /></li>
+                    <li key={key}><Button className="btn col-sm-12 glyphicon glyphicon-search" label={item.name} sendRequest={()=>sendRequest(item.data,item)} /></li>
                 ))}
                 </ul>
             </div>

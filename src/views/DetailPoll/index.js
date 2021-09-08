@@ -1,9 +1,16 @@
 import React,{useState} from 'react'
 import Button from '../../components/common/Button'
 import './DetailPoll.css'
+import { useDispatch ,useSelector} from 'react-redux'
+import { messageBox } from '../../utils/funtionsGeneric'
+import { useHistory } from 'react-router-dom'
 const DetailPoll =(props)=>{
-    const {state} = props.location
-    console.log('state sdasda',state);
+    const {state,id, name} = props.location
+    const history = useHistory();
+    const questions = useSelector(state => state?.responseReducer?.response)
+    const users = useSelector(state => state?.loginReducer?.user)
+    console.log('state',state);
+    const dispatch = useDispatch();
     const [data, setData] = useState([])
     const onChangeSelect = (item,question_id,type) => {
         const { target: { value = "" ,checked } = {} } = { ...item };
@@ -25,8 +32,10 @@ const DetailPoll =(props)=>{
         }
     }
     console.log('data',data);
-    const sendRegister = ()=> {
-
+    const send = ()=> {
+        dispatch({ type: 'ADD_RESPONSE', payload: [...questions,{ data, users,id_poll: id, name_poll: name }] });
+        messageBox('Éxito!','Registro exitoso','success')
+        history.push(`/Poll`);
     }
 
     return (
@@ -58,7 +67,7 @@ const DetailPoll =(props)=>{
                         </>
                     ))}
                   <br/>
-                    <Button className="btn col-sm-12 glyphicon glyphicon-search" label='Envíar' sendRequest={sendRegister} />
+                    <Button className="btn col-sm-12 glyphicon glyphicon-search" label='Envíar' sendRequest={send} />
                 </div>
             </div>
         </>

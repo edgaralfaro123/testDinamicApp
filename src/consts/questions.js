@@ -1,4 +1,5 @@
  const questions =[{
+    id:'1',
     name: 'Desarrollador',
     data:[
     {
@@ -101,6 +102,7 @@
 ]
 },
 {
+    id:'2',
     name: 'Motos',
     data:[]
 }
