@@ -8,7 +8,7 @@ import DetailPoll from "../views/DetailPoll";
     const userToken = useSelector(state => state?.loginReducer?.token)
     console.log('userToken',userToken);
     return (
-      userToken ?
+      !userToken ?
         <Router>
           <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
