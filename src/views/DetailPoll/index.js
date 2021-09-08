@@ -6,21 +6,13 @@ const DetailPoll =(props)=>{
     const [data, setData] = useState([])
 
     const onChangeSelect = (item,question_id,type) => {
-        console.log('item ---- >>>',item);
         const { target: { value = "" ,checked } = {} } = { ...item };
         switch(type) {
-            case 'free':
-                setData({...data,  [`question_${question_id}`] : { type, response: value} });
-              break;
-            case 'unique':
-                /* const filter = data.filter()question_2 */
-                setData({ ...data, [`question_${question_id}`] : { type, response: value} });
-              break;
             case 'multiple':
-                //console.log('data --->>--->>',checked);
+                //Validamos si la pregunta ya esta en el array
                 const check = data[`question_${question_id}`] ?? []
-                console.log('check',check);
                 if(check.length>0){
+                    //En caso de que si este en el array procedemos a obtener 
                     const response = check.filter((item)=> item.response !== `${value}`)
                     setData({...data , [`question_${question_id}`] : [...response, {type, response: value, check: checked} ] } );
                 }else{
@@ -28,9 +20,11 @@ const DetailPoll =(props)=>{
                 }
             break;
             default:
-              // code block
+                //
+                setData({...data,  [`question_${question_id}`] : { type, response: value} });
         }
     }
+    console.log('data',data);
     return (
         <>
             <div className="row">
@@ -51,7 +45,7 @@ const DetailPoll =(props)=>{
                         :
                             item.type === 'multiple' ?
                                 item.request.map((question,key)=>(
-                                    < ><label><input key={key} className='form-check-input' type="checkbox" id={question.id} onChange={(checked)=>onChangeSelect(checked,item.question_id,'multiple')} value={`question_${question.id}`}/>{question.request}</label><br/></>
+                                    <><label><input key={key} className='form-check-input' type="checkbox" id={question.id} onChange={(checked)=>onChangeSelect(checked,item.question_id,'multiple')} value={`question_${question.id}`}/>{question.request}</label><br/></>
                                 ))
                             :
                              'Formato de pregunta incorrecta'
